@@ -24,8 +24,8 @@ else()
 	find_package(BLAS REQUIRED )
 
 	set_target_properties(rclst rclss PROPERTIES COMPILE_OPTIONS -Wpedantic -Wall -Wextra)
-	target_link_libraries(rclst openblas)
-	target_link_libraries(rclss openblas)
+	target_link_libraries(rclst openblas pthread dlib)
+	target_link_libraries(rclss openblas pthread dlib)
 endif()
 
 install(TARGETS rclst RUNTIME DESTINATION bin)
