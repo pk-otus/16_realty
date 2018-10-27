@@ -11,7 +11,9 @@ before_script:
   - sudo apt-get update
   - sudo apt-get install libopenblas-dev
   - sudo apt-get install libdlib-dev  
-
+  - wget http://dlib.net/files/dlib-19.16.tar.bz2
+  - mkdir dlib
+  - tar xvf dlib-19.16.tar.bz2 -C dlib --strip-components=1
   - export CXX=/usr/bin/g++-7
   - export CC=/usr/bin/gcc-7
 
