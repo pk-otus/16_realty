@@ -6,8 +6,10 @@ else()
    project(realty VERSION 0.0.1)
 endif()
 
-add_executable(rclst rclst.cpp)
-add_executable(rclss rclss.cpp)
+file(GLOB HEADER_FILES ${PROJECT_SOURCE_DIR}/*.h)
+
+add_executable(rclst rclst.cpp ${HEADER_FILES})
+add_executable(rclss rclss.cpp ${HEADER_FILES})
 
 set_target_properties(rclst rclss PROPERTIES
 	CXX_STANDARD 14
@@ -24,8 +26,8 @@ else()
 	find_package(BLAS REQUIRED )
 
 	set_target_properties(rclst rclss PROPERTIES COMPILE_OPTIONS -Wpedantic -Wall -Wextra)
-	target_link_libraries(rclst openblas pthread dlib)
-	target_link_libraries(rclss openblas pthread dlib)
+	target_link_libraries(rclst pthread dlib openblas)
+	target_link_libraries(rclss pthread dlib openblas)
 endif()
 
 install(TARGETS rclst RUNTIME DESTINATION bin)
