@@ -2,6 +2,7 @@
 #include <string>
 #include <vector>
 #include <cstring>
+#include <fstream>
 
 #include "data_types.h"
 #include "normalizer.h"
