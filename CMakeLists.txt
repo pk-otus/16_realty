@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 3.2)
 
 if (DEFINED ENV{TRAVIS_BUILD_NUMBER})
    project(realty VERSION 0.0.$ENV{TRAVIS_BUILD_NUMBER})
+
+   	find_package(DLIB REQUIRED )
 else()
    project(realty VERSION 0.0.1)
 endif()
@@ -26,8 +28,8 @@ else()
 	find_package(BLAS REQUIRED )
 
 	set_target_properties(rclst rclss PROPERTIES COMPILE_OPTIONS -Wpedantic -Wall -Wextra)
-	target_link_libraries(rclst pthread dlib openblas)
-	target_link_libraries(rclss pthread dlib openblas)
+	target_link_libraries(rclst dlib openblas)
+	target_link_libraries(rclss dlib openblas)
 endif()
 
 install(TARGETS rclst RUNTIME DESTINATION bin)
